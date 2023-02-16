@@ -1,5 +1,9 @@
 let word = "hello";
 
+const letters = ['M', 'N', 'P', 'Q', 'R'];
+const letters1 = ['m', 'n', 'p', 'q', 'r'];
+
+console.log(missing_letter(letters1));
 
 function missing_letter(letters) {
 
@@ -34,14 +38,44 @@ function missing_letter(letters) {
         'z' : 26,
     };
 
+    let isUpper = false;
+
     for(let letter of letters) {
+        if(letter.toUpperCase() == letter) {
+            isUpper = true;
+            lowerLetter = letter.toLowerCase();
+            letterValue.push(alphabet[lowerLetter]);
+            continue;
+        }
         letterValue.push(alphabet[letter]);
     }
 
-    for(let value of letterValue) {
-        
+    let temp = 0;
+
+    Object.prototype.getKey = function(value) {
+        for(var key in this) {
+            if(this[key] == value) {
+                return key;
+            }
+        }
+        return null;
+    };
+
+    for(let x = letterValue.length - 1; x >= 0; x--) {
+        if(x == letterValue.length - 1) {
+            temp = letterValue[x];
+            continue;
+        }
+        temp -= letterValue[x];
+        if(temp > 1) {
+            if(isUpper) {
+                let missing = alphabet.getKey(letterValue[x] + 1);
+                return missing.toUpperCase();
+            }
+            return alphabet.getKey(letterValue[x] + 1);
+            
+        }
+        temp = letterValue[x];
     }
 
-    return letterValue;
-    
 }
