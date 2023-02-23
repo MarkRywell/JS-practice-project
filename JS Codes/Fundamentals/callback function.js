@@ -1,16 +1,5 @@
 const words = "Programming is fun";
 
-function fetchVowels(letter) {
-    const vowels = ['a','e','i','o','u'];
-
-    for(let vowel of vowels) {
-        if(vowel == letter) {
-            return 1;
-        }
-    }
-    return 0;
-}
-
 function countVowels(words, callBack) {
     let counter = 0;
 
