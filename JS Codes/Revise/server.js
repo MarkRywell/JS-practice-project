@@ -20,10 +20,15 @@ dbConnect((error) => {
 
 
 app.get('/foods', (req, res) => {
+
+    const page = req.query.page || 0;
+    const dataPerPage = 5;
     let foods = [];
 
     db.collection('foods')
     .find()
+    .skip(page * dataPerPage)
+    .limit(dataPerPage)
     .forEach(food => foods.push(food))
     .then(() => {
         res.status(200).json(foods);
@@ -32,6 +37,7 @@ app.get('/foods', (req, res) => {
         res.status(500).json({error: "Error fetching data"});
     })
 });
+
 
 
 app.get('/foods/:name', (req, res) => {
@@ -47,16 +53,30 @@ app.get('/foods/:name', (req, res) => {
 
 });
 
+// app.post('/foods', (req, res) => {
+// 
+    // const food = req.body;
+// 
+    // db.collection('foods')
+    // .insertOne(food)
+    // .then(result => {res.status(201).json(result)})
+    // .catch(() => {
+        // res.status(500).json({error: `Error ${req.method}`});
+    // });
+// });
+
+
 app.post('/foods', (req, res) => {
 
-    const food = req.body;
+    const jsonData = req.query;
+    console.log(jsonData);
+    jsonData['quantity'] = Number(jsonData['quantity']);
 
     db.collection('foods')
-    .insertOne(food)
+    .insertOne(jsonData)
     .then(result => {res.status(201).json(result)})
-    .catch(() => {
-        res.status(500).json({error: `Error ${req.method}`});
-    });
+    .catch(error => {res.status(500).json(error)})
+
 });
 
 app.delete('/foods/:name', (req, res) => {

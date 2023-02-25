@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 
-const uri = "mongodb://127.0.0.1:27017/ProgVar";
+const uri = "mongodb+srv://markgaje:markgaje43@mern.w3pazz9.mongodb.net/?retryWrites=true&w=majority";
 
 let dbConnection;
 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Card</title>
+    <style>
+        .card {
+            border: 1px solid;
+            margin: auto;
+            margin-top: 100px;
+            width: 30%;
+            height: 20vh;
+            text-align: center;
+            display: flex;
+        }
+
+        .card > div {
+            background-color: #f1f1f1;
+            margin: 10px;
+            padding: 20px;
+            text-align: left;
+        }
+
+        #mypic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div><img src="mark.png" id="mypic"></div>
+        <div>
+            <ul style="line-height: 150%;">
+                <li>Mark Rywell G. Gaje</li>
+                <li>3rd Year - BSIT</li>
+                <li>BackEnd Developer</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

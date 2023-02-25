@@ -8,11 +8,20 @@ function oddOrEven(number, callback) {
     }
 }
 
-oddOrEven(7, (odd, even) => {
-    if(odd) {
-        console.log(odd);
-    }
-    else {
-        console.log(even);
-    }
-});
+// oddOrEven(7, (odd, even) => {
+    // if(odd) {
+        // console.log(odd);
+    // }
+    // else {
+        // console.log(even);
+    // }
+// });
+
+const data = {
+    "name" : "wtf",
+    "quantity" : '15'
+};
+
+
+
+console.log(Number(data["quantity"]));
