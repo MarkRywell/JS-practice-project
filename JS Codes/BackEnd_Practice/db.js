@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb');
+const mongodb = require('mongoose');
 
 const uri = "mongodb://127.0.0.1:27017/ProgVar";
 
