@@ -1,23 +1,24 @@
-const mongodb = require('mongoose');
-
-const uri = "mongodb://127.0.0.1:27017/ProgVar";
-
+const mongoose = require('mongoose');
+require('dotenv').config();
 
 let dbConnection;
 
+mongoose.set('strictQuery', false);
+
 module.exports = {
     dbConnect: (callBack) => {
-        MongoClient.connect(uri)
+        mongoose.connect(process.env.MONGO_URI)
+    
         .then((client) => {
-            dbConnection = client.db();
+            dbConnection = client.db;
             return callBack();
         })
         .catch((error) => {
             console.log(error);
             return callBack(error);
-        })
+        });
     },
     getDb: () => dbConnection
-};
+}
 
 

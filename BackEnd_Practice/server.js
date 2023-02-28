@@ -23,20 +23,15 @@ app.use((req, res, next) => {
 app.use('/api/foods', foodsRoute);
 
 
-app.listen(process.env.PORT, () => {
-    console.log(`App running at PORT ${process.env.PORT}`);
+dbConnect((error) => {
+    if(!error) {
+        app.listen(process.env.PORT, () => {
+            console.log(`App running at PORT ${process.env.PORT}`);
+        });
+        console.log(getDb(), "wtf");
+        db = getDb();
+    }
 });
-
-
-// dbConnect((error) => {
-    // if(!error) {
-        // app.listen(3000, () => {
-            // console.log('App running at PORT 3000');
-        // });
-// 
-        // db = getDb();
-    // }
-// });
 
 
 
